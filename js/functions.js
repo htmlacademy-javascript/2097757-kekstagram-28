@@ -9,6 +9,8 @@ const validateStringLength = (target, stringLength) => {
   return (target.length <= stringLength) ? true : false;
 };
 
+validateStringLength('person', 10);
+
 /**
  * Проверка строки на предмет является ли палиндромом
  * @param {string|number} target
@@ -16,9 +18,11 @@ const validateStringLength = (target, stringLength) => {
  */
 const isPalindrome = (target) => {
   target = target.toString().toLowerCase().replaceAll(' ', '');
-  let reversed = target.toLowerCase().replaceAll(' ', '').split('').reverse().join('');
+  const reversed = target.toLowerCase().replaceAll(' ', '').split('').reverse().join('');
   return reversed === target;
 };
+
+isPalindrome(343);
 
 
 /**
@@ -28,10 +32,12 @@ const isPalindrome = (target) => {
  */
 const parseDigits = (target) => {
 
-  let digits = target.toString().replace(/[^0-9]/g, '');
+  const digits = target.toString().replace(/[^0-9]/g, '');
   return (digits) ? Number(digits) : NaN;
 
 };
+
+parseDigits('1 car takes 25 gallons');
 
 /**
  *Добавит в начало строки символы другой строки.
@@ -49,3 +55,5 @@ const padStart = (target, length, pad) => {
   return `${start}${target}`.slice(-length);
 
 };
+
+padStart('34', 3, 'length');
