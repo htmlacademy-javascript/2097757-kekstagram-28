@@ -6,7 +6,8 @@
  * @returns
  */
 const validateStringLength = (target, stringLength) => {
-  return (target.length <= stringLength) ? true : false;
+  const targetLength = target.length;
+  return targetLength <= stringLength;
 };
 
 validateStringLength('person', 10);
@@ -50,7 +51,6 @@ parseDigits('1 car takes 25 gallons');
 const padStart = (target, length, pad) => {
 
   const start = pad.repeat(length);
-  console.log(start);
 
   return `${start}${target}`.slice(-length);
 
