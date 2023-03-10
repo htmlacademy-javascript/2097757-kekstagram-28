@@ -62,14 +62,14 @@ const createPictureState = (id) => {
 
 
 /**
- * *возвращает список объектов Image State
+ * *возвращает список объектов PictureState
  * @param {number} length
  * @return {PictureState[]}
  */
-const createImageStateList = (length = 25) => {
+const createPictureStateList = (length = 25) => {
   const list = new Array(length).fill(1);
 
   return list.map((start, index) => createPictureState(start + index));
 };
 
-export default createImageStateList;
+export default createPictureStateList;
