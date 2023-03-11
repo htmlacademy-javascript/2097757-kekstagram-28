@@ -47,11 +47,11 @@ const createCommentStateList = (length) => {
 };
 
 /**
- * *создает объект ImageState
+ * *создает объект PictureState
  * @param {number} id
- * @return {ImageState}
+ * @return {PictureState}
  */
-const createImageState = (id) => {
+const createPictureState = (id) => {
   const url = `photos/${id}.jpg`;
   const description = pickItemFromList(descriptions);
   const likes = pickIntegerInRange(15, 200);
@@ -62,14 +62,14 @@ const createImageState = (id) => {
 
 
 /**
- * *возвращает список объектов Image State
+ * *возвращает список объектов PictureState
  * @param {number} length
- * @return {ImageState[]}
+ * @return {PictureState[]}
  */
-const createImageStateList = (length = 25) => {
+const createPictureStateList = (length = 25) => {
   const list = new Array(length).fill(1);
 
-  return list.map((start, index) => createImageState(start + index));
+  return list.map((start, index) => createPictureState(start + index));
 };
 
-export default createImageStateList;
+export default createPictureStateList;
