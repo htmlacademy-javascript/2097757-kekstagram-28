@@ -1,3 +1,5 @@
+import updatePreview from '../gallery-preview/gallery-preview.js';
+
 /**
  * @type { HTMLElement }
  */
@@ -9,6 +11,7 @@ const gallery = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture');
 
 /**
+ * *создаем копию карточки из template
  * @param {PictureState} data
  * @return {HTMLAnchorElement};
  */
@@ -23,6 +26,10 @@ const createPicture = (data) => {
   picture.querySelector('.picture__img').setAttribute('src', data.url);
   picture.querySelector('.picture__comments').textContent = String(data.comments.length);
   picture.querySelector('.picture__likes').textContent = String(data.likes);
+
+  picture.addEventListener('click', () => {
+    updatePreview(data);
+  });
 
   return picture;
 };
@@ -46,6 +53,7 @@ const initGallery = (data) => {
   //  TODO Сортировка
 
   renderPictures(data);
+  updatePreview(data[5]);
 
 
 };
