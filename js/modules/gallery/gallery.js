@@ -1,4 +1,5 @@
 import updatePreview from '../gallery-preview/gallery-preview.js';
+// import openPopup from '../popup/popup.js';
 
 /**
  * @type { HTMLElement }
@@ -10,6 +11,10 @@ const gallery = document.querySelector('.pictures');
  */
 const pictureTemplate = document.querySelector('#picture');
 
+/**
+ * @type {HTMLElement}
+ */
+const popup = document.querySelector('.big-picture');
 /**
  * *создаем копию карточки из template
  * @param {PictureState} data
@@ -29,6 +34,7 @@ const createPicture = (data) => {
 
   picture.addEventListener('click', () => {
     updatePreview(data);
+    // openPopup(popup);
   });
 
   return picture;
