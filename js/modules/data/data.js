@@ -21,9 +21,12 @@ const names = [
   'Игорь',
   'Анна',
   'Борис',
+  'Какой-то человек',
+  'Пять копеек',
 ];
 
 /**
+ * создает шаблон объекта для картинок
  * @param {number} id
  * @return {CommentState}
  */
@@ -36,7 +39,7 @@ const createCommentState = (id) => {
 };
 
 /**
- *
+ * создает массив объектов из шаблона createCommentState
  * @param {number} length
  * @return {CommentState[]}
  */
