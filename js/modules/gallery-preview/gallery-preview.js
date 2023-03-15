@@ -1,5 +1,5 @@
 /**
- * @param {HTMLElement} preview
+ * @type {HTMLElement} preview
  */
 const preview = document.querySelector('.big-picture__preview');
 
@@ -9,35 +9,37 @@ const preview = document.querySelector('.big-picture__preview');
 const discussion = preview.querySelector('.social__comments');
 
 /**
- * @type {HTMLElement}
+ * @type {HTMLLIElement} commentTemplate
  */
 const commentTemplate = discussion.querySelector('.social__comment');
 
 /**
  * @param {CommentState} data
- * @return {HTMLElement}
+ * @return {HTMLLIElement}
  */
 const createComment = (data) => {
   const comment =
-    /**
-     * @type {HTMLElement}
-     */
-    (commentTemplate.cloneNode(true));
-  comment.querySelector('.social__picture').setAttribute('src', data.avatar);
-  comment.querySelector('.social__picture').setAttribute('alt', data.name);
-  comment.querySelector('.social__text').textContent = data.message;
+  /**
+   * @type {HTMLLIElement}
+   */
+  (commentTemplate.cloneNode(true));
+  comment.querySelector('.social-picture').setAttribute('src', data.avatar);
+  comment.querySelector('.social-picture').setAttribute('alt', data.name);
+  comment.querySelector('.social-text').textContent = data.message;
+
 
   return comment;
-
 };
 
 /**
- * @param{PictureState} data
+ * @param {PictureState} data
  */
+
 const updatePreview = (data) => {
+
   preview.querySelector('.big-picture__img img').setAttribute('src', data.url);
   preview.querySelector('.social__caption').textContent = data.description;
-  preview.querySelector('.likes__count').textContent = String(data.likes);
+  preview.querySelector('.likes-count').textContent = String(data.likes);
 
   discussion.replaceChildren(...data.comments.map(createComment));
 };
