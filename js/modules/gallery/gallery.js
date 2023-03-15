@@ -1,3 +1,6 @@
+import updatePreview from '../gallery-preview/gallery-preview.js';
+import openPopup from '../popup/popup.js';
+
 /**
  * @type { HTMLElement }
  */
@@ -7,6 +10,7 @@ const gallery = document.querySelector('.pictures');
  * @type {HTMLTemplateElement}
  */
 const pictureTemplate = document.querySelector('#picture');
+const popup = document.querySelector('.bif__picture');
 
 /**
  * @param {PictureState} data
@@ -23,6 +27,12 @@ const createPicture = (data) => {
   picture.querySelector('.picture__img').setAttribute('src', data.url);
   picture.querySelector('.picture__comments').textContent = String(data.comments.length);
   picture.querySelector('.picture__likes').textContent = String(data.likes);
+
+  picture.addEventListener('click', () => {
+    updatePreview(data);
+    openPopup(popup);
+
+  });
 
   return picture;
 };
@@ -46,7 +56,7 @@ const initGallery = (data) => {
   //  TODO Сортировка
 
   renderPictures(data);
-
+  updatePreview(data[5]);
 
 };
 
