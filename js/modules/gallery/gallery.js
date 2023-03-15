@@ -1,4 +1,5 @@
 import updatePreview from '../gallery-preview/gallery-preview.js';
+import openPopup from '../popup/popup.js';
 
 /**
  * @type { HTMLElement }
@@ -55,6 +56,7 @@ const initGallery = (data) => {
 
   renderPictures(data);
   updatePreview(data[5]);
+  openPopup(popup);
 
 };
 
