@@ -13,9 +13,10 @@ const gallery = document.querySelector('.pictures');
  */
 const pictureTemplate = document.querySelector('#picture');
 
-
-const popup = document.querySelector('.big__picture');
-
+/**
+ * @type {HTMLElement}
+ */
+const popup = document.querySelector('.big-picture');
 /**
  * *создаем копию карточки из template
  * @param {PictureState} data
@@ -35,6 +36,7 @@ const createPicture = (data) => {
 
   picture.addEventListener('click', () => {
     updatePreview(data);
+    // openPopup(popup);
   });
 
   return picture;
@@ -57,7 +59,7 @@ const renderPictures = (data) => {
  * @param {PictureState[]} data
  */
 const initGallery = (data) => {
-  //NOTE Сортировка
+  //TODO Sort
 
   renderPictures(data);
   updatePreview(data[5]);
