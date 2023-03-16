@@ -57,7 +57,7 @@ const renderPictures = (data) => {
  * @param {PictureState[]} data
  */
 const initGallery = (data) => {
-  //  TODO Сортировка
+  //NOTE Сортировка
 
   renderPictures(data);
   updatePreview(data[5]);
