@@ -1,12 +1,14 @@
 import updatePreview from '../gallery-preview/gallery-preview.js';
-// import openPopup from '../popup/popup.js';
+import openPopup from '../popup/popup.js';
 
 /**
+ * переменная контейнер для миниатюр
  * @type { HTMLElement }
  */
 const gallery = document.querySelector('.pictures');
 
 /**
+ *
  * @type {HTMLTemplateElement}
  */
 const pictureTemplate = document.querySelector('#picture');
@@ -41,6 +43,7 @@ const createPicture = (data) => {
 };
 
 /**
+ * вставляем карточку с данными в контейнер для миниатюр
  * @param {PictureState[]} data
  */
 const renderPictures = (data) => {
@@ -56,11 +59,11 @@ const renderPictures = (data) => {
  * @param {PictureState[]} data
  */
 const initGallery = (data) => {
-  //  TODO Сортировка
+  //TODO Sort
 
   renderPictures(data);
   updatePreview(data[5]);
-
+  openPopup(popup);
 
 };
 
