@@ -15,15 +15,27 @@ const commentTemplate = discussion.querySelector('.social__comment');
 
 
 /**
+ * @type {HTMLButtonElement}
+ */
+const moreButton = preview.querySelector('.comments-loader');
+
+
+/**
+ * @type {PictureState & {commentsTotal: number}}
+ */
+let currentData;
+
+/**
  * @param {CommentState} data
  * @returns {HTMLLIElement}
  */
 const createComment = (data) => {
   const comment =
   /**
- * @type {HTMLLIElement}
- */
+   * @type {HTMLLIElement}
+   */
   (commentTemplate.cloneNode(true));
+
   comment.querySelector('.social__picture').setAttribute('src', data.avatar);
   comment.querySelector('.social__picture').setAttribute('alt', data.name);
   comment.querySelector('.social__text').textContent = data.message;
@@ -33,16 +45,36 @@ const createComment = (data) => {
 
 };
 
+const onMoreButtonClick = () => {
+
+  const newComments = currentData.comments.splice(0, 5).map(createComment);
+  const shown = currentData.commentsTotal - currentData.comments.length;
+
+  preview.querySelector('.comments-shown').textContent = String(shown);
+  discussion.append(...newComments);
+  moreButton.classList.toggle('hidden', shown === currentData.commentsTotal);
+
+
+};
+
 /**
  * @param {PictureState} data
  */
 const updatePreview = (data) => {
 
-  preview.querySelector('.big-picture__img img').setAttribute('src', data.url);
-  preview.querySelector('.likes-count').textContent = String(data.likes);
-  preview.querySelector('.social__comments').textContent = data.description;
+  currentData = {
+    ...structuredClone(data),
+    commentsTotal: data.comments.length
+  };
 
-  discussion.replaceChildren(...data.comments.map(createComment));
+  preview.querySelector('.big-picture__img img').setAttribute('src', currentData.url);
+  preview.querySelector('.likes-count').textContent = String(currentData.likes);
+  preview.querySelector('.social__comments').textContent = currentData.description;
+
+  preview.querySelector('.comments-count').textContent = String(currentData.commentsTotal);
+  discussion.replaceChildren();
+  moreButton.addEventListener('click', onMoreButtonClick);
+  moreButton.click();
 };
 
 export default updatePreview;
