@@ -1,4 +1,4 @@
-import openPopup from "../popup/popup.js";
+import openPopup from '../popup/popup.js';
 
 /**
  * @type {HTMLFormElement}
